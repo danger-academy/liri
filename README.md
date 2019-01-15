@@ -78,6 +78,6 @@ Uses Node's [fs](https://nodejs.org/api/fs.html) package to read a file with a c
 Uses [dotenv](https://www.npmjs.com/package/dotenv) to add a layer of data security, by storing the relevant api keys in a separate file 
 
 ### log.txt
-As a bonus feature, uses [fs](https://nodejs.org/api/fs.html) to append the output (including command and search parameter) to a log file via `logToFile()`, like so:
+As a bonus feature, uses [fs](https://nodejs.org/api/fs.html#fs_file_system) to append the output (including command and search parameter) to a log file via `logToFile()`, like so:
 
 ![log](assets/images/log.PNG)
