@@ -80,4 +80,4 @@ Uses [dotenv](https://www.npmjs.com/package/dotenv) to add a layer of data secur
 ### log.txt
 As a bonus feature, uses [fs](https://nodejs.org/api/fs.html) to append the output (including command and search parameter) to a log file via `logToFile()`, like so:
 
-![log](assets/images/log.png)
+![log](assets/images/log.PNG)
