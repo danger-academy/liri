@@ -1,13 +1,13 @@
 // Require modules
 require("dotenv").config();
-const Spotify = require("node-spotify-api");
+const spotAPI = require("node-spotify-api");
 const axios = require("axios");
 const moment = require("moment");
 const fs = require("fs");
 
 // Retrieve API keys from .env
 const keys = require("./keys.js");
-const spotify = new Spotify(keys.spotify);
+const spotify = new spotAPI(keys.spotify);
 const bandsInTownID = keys.bandsInTown.id;
 const omdbID = keys.omdb.id;
 
@@ -24,8 +24,8 @@ class Command {
     }
 }
 
-// Define command0
-const command0 = {
+// Define commandParam
+const commandParam = {
     "spotify-this-song": new Command(callSongData),
     "movie-this": new Command(callMovieData),
     "concert-this": new Command(callConcertData),
@@ -33,8 +33,8 @@ const command0 = {
 }
 
     // Run command using the query
-    if (command0[command]) {
-        command0[command].run(query);
+    if (commandParam[command]) {
+        commandParam[command].run(query);
     }
     else {
         printUsage();
@@ -83,6 +83,7 @@ function callConcertData(query) {
             response.data.forEach(concert => {
                 output += concert.venue.name;
                 output += "\n" + concert.venue.city + ", " + concert.venue.region + " " + concert.venue.country;
+                // Use Moment for date formatting, because THAT's a thing
                 output += "\n" + moment(concert.datetime.substr(0, 10), "YYYY-MM-DD").format("MM/DD/YYYY") + "\n\n";
             });
             output = output.trim();
@@ -144,7 +145,7 @@ function doWhatItSays(fileName) {
                 fs.appendFile("log.txt", "do-what-it-says " + fileName + "\n", error => {
                     if (error) throw error;
                 });
-                command0[command].run(query);
+                commandParam[command].run(query);
             }
         });
     }
@@ -167,7 +168,7 @@ function logToFile(command, searchTerm, result) {
     }
 }
 
-// Print command0 instructions to console
+// Print commandParam instructions to console
 function printUsage() {
     console.log("USAGE:");
     console.log("node liri.js concert-this <artist/band name here>");

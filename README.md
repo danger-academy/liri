@@ -3,6 +3,8 @@ LIRI is a command-line interface (CLI) which accepts properly formatted queries 
 
 ### Challenges
 Reading through all of the API documentation took a fair amount of time. It also took a few run-throughs to get the npm packages properly installed. 
+
+It had been suggested to me that I learn up on ES6 and above, so I also tried incorporating some of what I done learnt, starting with using const in place of var 
 ***
 
 ### APIs used:
